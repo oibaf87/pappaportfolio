@@ -1,0 +1,25 @@
+const styleSwitcherToggler = document.querySelector(".style-Switcher-Toggler");
+styleSwitcherToggler.addEventListener("click" , () =>{ document.querySelector(".style-Switcher").classList.toggle("open");
+})
+
+window.addEventListener("scroll", ()=>{
+  if (document.querySelector(".style-Switcher").classList.contains("open"))
+    {
+      document.querySelector(".style-Switcher").classList.remove("open");
+    }
+})
+
+const alternateStyle = document.querySelectorAll(".alternate-style");
+function setActiveStyle(color)
+{
+  localStorage.setItem("color",color);
+  chengeColor();
+}
+function chengeColor(){
+  alternateStyle.forEach((style) =>{
+    if(localStorage.getItem("color") === style.getAttribute("title"))
+    {
+      style.removeAttribute("disabled");
+    }
+  })
+}
